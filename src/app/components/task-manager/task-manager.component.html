@@ -1,0 +1,29 @@
+<div class="task-manager">
+    <div class="task-header">
+      <h2>📝 Gestor de Tareas</h2>
+    </div>
+    
+    <div class="task-form">
+      <input 
+        type="text" 
+        [(ngModel)]="newTaskName" 
+        placeholder="¿Qué necesitas hacer?"
+        (keyup.enter)="addTask()"
+        class="task-input">
+      <button (click)="addTask()" class="add-button">
+        <span>Agregar</span>
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+  
+    <div class="task-list">
+      @for (task of tasks$ | async; track task.id) {
+        <div class="task-item">
+          <span class="task-text">{{ task.name }}</span>
+          <button (click)="deleteTask(task.id)" class="delete-button">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      }
+    </div>
+  </div>

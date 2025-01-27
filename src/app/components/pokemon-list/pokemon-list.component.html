@@ -1,0 +1,59 @@
+<div class="pokemon-list">
+    <div class="pokemon-header">
+      <h2>🎮 Pokédex</h2>
+      <div class="pokemon-actions">
+        <div class="search-container">
+          <input 
+            type="text" 
+            [(ngModel)]="searchTerm" 
+            placeholder="Buscar por nombre"
+            (keyup.enter)="searchPokemon()"
+            class="search-input"
+          >
+          <button 
+            (click)="searchPokemon()" 
+            class="search-button"
+            [disabled]="searching || !searchTerm.trim()"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <button 
+          (click)="refreshList()" 
+          [disabled]="loading" 
+          class="refresh-button"
+        >
+          <span>{{ loading ? 'Cargando...' : 'Descubrir Pokémon' }}</span>
+          <i class="fas fa-sync-alt" [class.fa-spin]="loading"></i>
+        </button>
+      </div>
+    </div>
+  
+    @if (error) {
+      <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ error }}
+      </div>
+    }
+  
+    <div class="pokemon-grid">
+      @if (loading || searching) {
+        <div class="loading-message">
+          <div class="pokeball-spinner"></div>
+          <p>{{ searching ? 'Buscando Pokémon...' : 'Cargando Pokémon...' }}</p>
+        </div>
+      } @else {
+        @for (pokemon of pokemons; track pokemon.id) {
+          <div class="pokemon-card">
+            <div class="pokemon-image">
+              <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+            </div>
+            <div class="pokemon-info">
+              <span class="pokemon-number">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
+              <h3>{{ pokemon.name | titlecase }}</h3>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
