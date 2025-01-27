@@ -50,7 +50,7 @@ ng serve
 
 5. Abre tu navegador y visita:
 ```
-http://localhost:4200
+http://localhost:4200 o similar
 ```
 
 ## 📖 Uso
