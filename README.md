@@ -8,7 +8,7 @@ Trabajo Pokemon y Task Manager
 - 🔍 Búsqueda de Pokémon por nombre
 - 🎲 Generación aleatoria de Pokémon
 - 📱 Diseño responsive
-- 🎨 Interfaz moderna y amigable
+- 🎨 Interfaz amigable
 
 ## 🛠️ Tecnologías Utilizadas
 
